@@ -16,7 +16,6 @@ public class Magnet2Torrent {
     public static final String regex = "([A-Z0-9]{40})";
 
     public static void magnet2torrent(String magnet, String torrent) throws InvalidMagnetLinkException, IOException {
-        System.out.println("[*] Fetching torrent file for magent link...");
         String magnet1 = magnet.toUpperCase();
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(magnet1);
@@ -25,6 +24,10 @@ public class Magnet2Torrent {
         }
         String hash = matcher.group(1);
         System.out.println("[*] Parsed hash: \"" + hash + "\"");
+        magent2torrent(hash, torrent);
+    }
+
+    public static void magent2torrent(String hash, String torrent) throws IOException {
         File file;
         if (torrent == null) {
             file = new File(System.getProperty("user.dir") + File.separator + hash + ".torrent");

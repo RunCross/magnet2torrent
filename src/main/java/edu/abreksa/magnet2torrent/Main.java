@@ -14,13 +14,21 @@ public class Main {
         cmdLineParser = new CmdLineParser(config);
         try {
             cmdLineParser.parseArgument(args);
+            if (config.hash == null & config.magentLink == null) {
+                usage(System.out);
+                System.exit(1);
+            }
         } catch (CmdLineException e) {
             System.out.println(e.getMessage());
             usage(System.out);
             System.exit(1);
         }
         try {
-            Magnet2Torrent.magnet2torrent(config.magentLink, config.torrent);
+            if (config.hash != null) {
+                Magnet2Torrent.magnet2torrent(config.hash, config.torrent);
+            } else {
+                Magnet2Torrent.magnet2torrent(config.magentLink, config.torrent);
+            }
         } catch (Exception e) {
             System.out.println("[*] " + e.getMessage());
         }
