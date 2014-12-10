@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * Created by Andrew on 12/7/2014.
  */
 public class Magnet2Torrent {
-    public static final String torrageUrl = "http://torrage.com/torrent/%s.torrent";
+    public static final String torrageUrl = "http://torrage.luisaranguren.com/torrent/%s.torrent";
     public static final String regex = "([A-Z0-9]{40})";
 
     public static void magnet2torrent(String magnet, String torrent) throws InvalidMagnetLinkException, IOException {
